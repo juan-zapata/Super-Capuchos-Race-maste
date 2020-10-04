@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class P1BulletController : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class P1BulletController : MonoBehaviour
     Text timerText;
     Text gameOverText;
 
+    PhotonView PV;
+
 
     void Start()
     {
+        PV = GetComponent<PhotonView>();
+
         avoidLetterText = GameObject.Find("P1AvoidLetter").GetComponent<Text>();
         timerText = GameObject.Find("P1Tiempo").GetComponent<Text>();
         
@@ -28,44 +33,47 @@ public class P1BulletController : MonoBehaviour
 
     void Update()
     {
-        //mueve la bala a la izquierda
-        gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
-
-        //actualiza el temporizador en pantalla
-        timer += Time.deltaTime;
-        timerText.text = "Tiempo: " + timer;
-
-        //si se presiona una tecla
-        if (Input.anyKeyDown)
+        if (PV.IsMine)
         {
-            if (Input.GetKey(avoidLetter) && !inCoolDown)
-            {
-                //devuelve la bala a la posición original y cambia la letra para esquivar
-                gameObject.transform.position = new Vector3(41, 16, 0);
-                avoidLetterSelection();
-                avoidLetterText.text = avoidLetter;
-                //aumenta la velocidad para la próxima bala
-                speed -= 2f;
-            }
-            else
-            {
-                inCoolDown = true;
-                //cambia la letra a rojo
-                avoidLetterText.color = new Color(1, 0, 0, 1);
-            }
-        }
+            //mueve la bala a la izquierda
+            gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
 
-        //si está en cooldown aumenta el temporizador
-        if (inCoolDown)
-        {
-            coolDownTimer += Time.deltaTime;
-            //si llegó a 2 segundos, se elimina el cooldown
-            if (coolDownTimer >= 2F)
+            //actualiza el temporizador en pantalla
+            timer += Time.deltaTime;
+            timerText.text = "Tiempo: " + timer;
+
+            //si se presiona una tecla
+            if (Input.anyKeyDown)
             {
-                inCoolDown = false;
-                coolDownTimer = 0;
-                //cambia la letra a amarillo
-                avoidLetterText.color = new Color(1, 0.92f, 0.016f, 1);
+                if (Input.GetKey(avoidLetter) && !inCoolDown)
+                {
+                    //devuelve la bala a la posición original y cambia la letra para esquivar
+                    gameObject.transform.position = new Vector3(41, 16, 0);
+                    avoidLetterSelection();
+                    avoidLetterText.text = avoidLetter;
+                    //aumenta la velocidad para la próxima bala
+                    speed -= 2f;
+                }
+                else
+                {
+                    inCoolDown = true;
+                    //cambia la letra a rojo
+                    avoidLetterText.color = new Color(1, 0, 0, 1);
+                }
+            }
+
+            //si está en cooldown aumenta el temporizador
+            if (inCoolDown)
+            {
+                coolDownTimer += Time.deltaTime;
+                //si llegó a 2 segundos, se elimina el cooldown
+                if (coolDownTimer >= 2F)
+                {
+                    inCoolDown = false;
+                    coolDownTimer = 0;
+                    //cambia la letra a amarillo
+                    avoidLetterText.color = new Color(1, 0.92f, 0.016f, 1);
+                }
             }
         }
     }
