@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1304d236cf2060a4b97eda8638c0a788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitingRoomSceneIndex: 1
+  waitingRoomSceneIndex: 3
 --- !u!1001 &5292115805460731609
 PrefabInstance:
   m_ObjectHideFlags: 0

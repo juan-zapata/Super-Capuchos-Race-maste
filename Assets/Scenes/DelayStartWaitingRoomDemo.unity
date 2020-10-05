@@ -428,12 +428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e025f16d6cc79874eb973c6fe35cb0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplayerSceneIndex: 2
+  multiplayerSceneIndex: 4
   menuSceneIndex: 0
   minPlayersToStart: 2
   roomCountDisplay: {fileID: 1772064752}
   timerToStartDisplay: {fileID: 1769848851}
-  maxWaitTime: 30
+  maxWaitTime: 5
   maxFullGameWaitTime: 5
 --- !u!114 &1348390437
 MonoBehaviour:

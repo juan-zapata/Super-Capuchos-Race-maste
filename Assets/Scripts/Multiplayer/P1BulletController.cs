@@ -33,14 +33,14 @@ public class P1BulletController : MonoBehaviour
 
     void Update()
     {
+        //actualiza el temporizador en pantalla
+        timer += Time.deltaTime;
+        timerText.text = "Tiempo: " + timer;
+
         if (PV.IsMine)
         {
             //mueve la bala a la izquierda
             gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
-
-            //actualiza el temporizador en pantalla
-            timer += Time.deltaTime;
-            timerText.text = "Tiempo: " + timer;
 
             //si se presiona una tecla
             if (Input.anyKeyDown)
@@ -92,7 +92,7 @@ public class P1BulletController : MonoBehaviour
         gameOverText.text = "Game Over Player 2 won!";
         Destroy(GameObject.Find("Detective_0"));
         Destroy(GameObject.Find("P1AvoidLetter"));
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }   
 
 }

@@ -33,14 +33,16 @@ public class P2BulletController : MonoBehaviour
 
     void Update()
     {
+        //actualiza el temporizador en pantalla
+        timer += Time.deltaTime;
+        timerText.text = "Tiempo: " + timer;
+
         if (PV.IsMine)
         {
             //mueve la bala a la izquierda
             gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
 
-            //actualiza el temporizador en pantalla
-            timer += Time.deltaTime;
-            timerText.text = "Tiempo: " + timer;
+            
 
             //si se presiona una tecla
             if (Input.anyKeyDown)
@@ -93,7 +95,7 @@ public class P2BulletController : MonoBehaviour
         gameOverText.text = "Game Over Player 1 won!";
         Destroy(GameObject.Find("MrPickle_0"));
         Destroy(GameObject.Find("P2AvoidLetter"));
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }
