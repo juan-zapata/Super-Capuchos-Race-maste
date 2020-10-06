@@ -42,7 +42,7 @@ public class P1BulletController : MonoBehaviour
             timerText.text = "Tiempo: " + timer;
         }
 
-        if (PV.IsMine)
+        if (PV.IsMine && !isGameOver)
         {
             //mueve la bala a la izquierda
             gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
