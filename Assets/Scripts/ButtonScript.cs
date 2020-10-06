@@ -9,9 +9,13 @@ public class ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("menu");
     }
-        public void NextManualButtonPressed()
+    public void NextManualButtonPressed()
     {
         SceneManager.LoadScene("ManualMultiplayer");
+    }
+    public void Manual()
+    {
+        SceneManager.LoadScene("manualUnJugador");
     }
 
 }
