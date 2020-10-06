@@ -1447,8 +1447,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Para el modo de un jugador, se desplegar\xE1 una ventana, donde t\xFA
-    mision ser\xE1 sobrevivir el mayor tiempo posible, oprimiendo las letras que
+  m_text: "1. Para el modo de un jugador, se desplegar\xE1 una ventana, donde tu
+    misi\xF3n ser\xE1 sobrevivir el mayor tiempo posible, oprimiendo las letras que
     ir\xE1n apareciendo en la parte superior del personaje."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

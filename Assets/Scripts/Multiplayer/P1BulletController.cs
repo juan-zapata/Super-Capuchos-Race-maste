@@ -15,6 +15,8 @@ public class P1BulletController : MonoBehaviour
     Text timerText;
     Text gameOverText;
 
+    bool isGameOver;
+
     PhotonView PV;
 
 
@@ -33,9 +35,12 @@ public class P1BulletController : MonoBehaviour
 
     void Update()
     {
-        //actualiza el temporizador en pantalla
-        timer += Time.deltaTime;
-        timerText.text = "Tiempo: " + timer;
+        if (!isGameOver)
+        {
+            //actualiza el temporizador en pantalla
+            timer += Time.deltaTime;
+            timerText.text = "Tiempo: " + timer;
+        }
 
         if (PV.IsMine)
         {
@@ -92,7 +97,18 @@ public class P1BulletController : MonoBehaviour
         gameOverText.text = "Game Over Player 2 won!";
         Destroy(GameObject.Find("Detective_0"));
         Destroy(GameObject.Find("P1AvoidLetter"));
-        gameObject.SetActive(false);
+        isGameOver = true;
+        if (PV.IsMine)
+        {
+            PV.RPC("RPC_GameOver", RpcTarget.AllBuffered, isGameOver);
+        }
+        //gameObject.SetActive(false);
     }   
+
+    [PunRPC]
+    void RPC_GameOver(bool rpcIsGameOver)
+    {
+        isGameOver = rpcIsGameOver;
+    }
 
 }
