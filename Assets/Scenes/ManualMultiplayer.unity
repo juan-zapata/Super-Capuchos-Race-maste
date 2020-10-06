@@ -903,7 +903,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Dentro del juego, el primer jugador que haya entrado a la sala de espera,
-    controlar\xE1 el personaje de la parte inferior y por consecuente, el segundo
+    controlar\xE1 el personaje de la parte superior y por consecuente, el segundo
     en haber entrado ser\xE1 el personaje de la parte inferior."
 --- !u!222 &1514744530
 CanvasRenderer:
